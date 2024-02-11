@@ -3,7 +3,7 @@ repos:
     hooks:
       - id: black
         name: black
-        entry: black --config ./pyproject.toml .
+        entry: black --config ./.black .
         language: system
         types: [ python ]
         pass_filenames: false
