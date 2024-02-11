@@ -1,0 +1,50 @@
+{% load static %}
+{% with request.resolver_match.view_name as view_name %}
+<header id="header" class="header_one">
+    <div class="nav-bar">
+        <div class="navigation">
+            <div class="logo">
+                <a href="{% url 'homepage:index' %}"><img src=" {% if view_name  == 'homepage:index' %}{% static 'images/logo-white.png' %}{% else  %}{% static 'images/logo.png' %}{% endif %}" alt="logo"></a>
+            </div>
+            <nav id="flexmenu">
+                <div class="nav-inner">
+                    <ul class="main-menu">
+                        <li class="menu-item {% if view_name  == 'homepage:index' %}active{% endif %}"><a href="{% url 'homepage:index' %}">Главная</a>
+                        </li>
+                        <li class="menu-item {% if view_name  == 'gallery:category_list' %}active{% endif %}"><a href="{% url 'gallery:category_list' %}">Галерея</a>
+                        </li>
+                        <li class="menu-item {% if view_name  == 'about:about_me' %}active{% endif %}"><a href="{% url 'about:about_me' %}">Обо мне</a>
+                        </li>
+                        <li class="menu-item {% if view_name  == 'contacts:contacts' %}active{% endif %}"><a href="{% url 'contacts:contacts' %}">Контакты</a>
+                    </ul>
+                </div>
+            </nav>
+            <div class="nav-more-info">
+                <div class="element">
+                    <div id="mobile-toggle" class="mobile-btn">
+                        <span class="toggle_line"></span>
+                        <span class="toggle_line"></span>
+                        <span class="toggle_line"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlaynav">
+        <a href="#" class="overlaynavclose">&times;</a>
+        <nav id="overlaymenu">
+            <ul class="main-menu">
+                <li class="menu-item {% if view_name  == 'homepage:index' %}active{% endif %}"><a href="{% url 'homepage:index' %}">Главная</a>
+                </li>
+                <li class="menu-item {% if view_name  == 'gallery:category_list' %}active{% endif %}"><a href="{% url 'gallery:category_list' %}">Галерея</a>
+                </li>
+                <li class="menu-item {% if view_name  == 'about:about_me' %}active{% endif %}"><a href="{% url 'about:about_me' %}">Обо мне</a>
+                </li>
+                <li class="menu-item {% if view_name  == 'contacts:contacts' %}active{% endif %}"><a href="{% url 'contacts:contacts' %}">Контакты</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+{% endwith %}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+{% with request.resolver_match.view_name as view_name %}
+<html lang="ru">
+<head>
+  <!-- Meta Tags -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <meta name="description" content="Portfolio HTML5 Template">
+  <meta name="author" content="">
+
+  <!-- Page Title -->
+  <title>J.D.</title>
+
+  <!-- Favicon and touch Icons -->
+  <link href="{% static 'images/favicon1.png' %}" rel="shortcut icon" type="image/png">
+  <link href="{% static 'images/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  <link href="{% static 'images/apple-touch-icon-72x72.png' %}" rel="apple-touch-icon" sizes="72x72">
+  <link href="{% static 'images/apple-touch-icon-114x114.png' %}" rel="apple-touch-icon" sizes="114x114">
+  <link href="{% static 'images/apple-touch-icon-144x144.png' %}" rel="apple-touch-icon" sizes="144x144">
+
+        <!-- Lead Style -->
+        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+    </head>
+
+	<!-- Preloader -->
+	<div class="oculoader">
+		<div class="loader"></div>
+		<div class="top-side"></div>
+		<div class="bottom-side"></div>
+	</div>
+	<!--PreLoader End-->
+	
+    <body class="body_box {% if view_name  == 'homepage:index' %}dark_mode{% endif %}">
+{% endwith %}	
+		<div class="wrapper">
+			<!-- Start Header -->
+	        {% include "includes/header.html" %}
+            {% block content %}
+            {% endblock %}
+            {% include "includes/footer.html" %}  
+		</div>
+		
+        <!-- All JavaScript Files
+        ================================================== -->
+		<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.js' %}"></script>
+        <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+        <script src="{% static 'js/swiper.min.js' %}"></script>
+        <script src="{% static 'js/typed.min.js' %}"></script>
+        <script src="{% static 'js/menu.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="inner_body">
+	<div class="slide_1">
+		<div class="swiper-container">
+			<div class="swiper-wrapper"> 
+				{% for slide in sliders %}                                
+				  <div class="swiper-slide">
+					<div class="slider_item" style="background-image:url('{{ slide.image.url }}')">
+						<div class="slider-inner">
+							<div class="slider-details">
+								<h4 class="slider-tag">{{ slide.title_small }}</h4>
+								<h1 class="slide_heading"><span>{{ slide.title_big }}</span></h1>
+								<div class="button_group">
+									<a href="{% url 'gallery:category_list' %}" class="button effect_1 fade_black_button"><span>{{ slide.button_name }}</span></a>
+								</div>
+							</div>
+							<a class="popup fancyswiper" href="{{ slide.image.url }}" data-fancybox="images">
+								<img src="{% static 'images/icon-img/g-icon2.png' %}" alt="icon">
+							</a>
+						</div>
+					</div>
+				  </div>
+				  {% endfor %}
+			</div>
+		</div>
+		<p>
+		<div class="swiper-controller">
+			<!-- Add Pagination -->
+			<div class="swiper-pagination"></div>
+			<!-- If we need navigation buttons -->
+			<div class="swiper-navigation">
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
+			</div>
+		</div>
+	    </p>
+	</div>
+</div>
+
+{% endblock %}
+
