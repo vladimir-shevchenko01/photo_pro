@@ -37,10 +37,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "config.urls"
 
+TEMPLATES_DIR = BASE_DIR / "templates"
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [TEMPLATES_DIR],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -57,8 +59,12 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": env.str("DB_ENGINE", "django.db.backends.postgresql"),
+        "NAME": env.str("POSTGRES_DB", "django"),
+        "USER": env.str("POSTGRES_USER", "django"),
+        "PASSWORD": env.str("POSTGRES_PASSWORD", ""),
+        "HOST": env.str("DB_HOST", ""),
+        "PORT": env.int("DB_PORT", 5432),
     }
 }
 
