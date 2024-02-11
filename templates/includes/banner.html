@@ -1,0 +1,12 @@
+<div class="page-header type1" style="background-image:url('{{ main_banner.image.url }}')">
+    <div class="page-header-content text-center">
+        <div class="container">
+            <h1 class="heading">
+                {{ main_banner.title }}
+                <span class="icon"><i class="fa fa-camera"></i></span>
+            </h1>
+            <!-- Разбиваем текст описания на 10 слов в строке -->
+            <p>{{ main_banner.title_text|wordwrap:10 }}</p>
+        </div>
+    </div>
+</div>

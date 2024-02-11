@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="inner_body">
+	<!-- Блок заглавного баннера -->
+    {% include "includes/banner.html" %}
+    <!--Конец блока заглавного баннера -->
+	<div class="contact_body">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="contact_info">
+						<h3 class="title">{{ contacts.title }}</h3>
+						<p class="short_desc">{{ contacts.title_text }}</
+						<h4>Адрес:</h4>
+						<p>{{ contacts.adress }}</p>
+						<h4>Телефон:</h4>
+						<p>{{ contacts.phone_number }}</p>
+						<h4>Email:</h4>
+						<p>{{ contacts.email }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
