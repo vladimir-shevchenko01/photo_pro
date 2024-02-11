@@ -120,7 +120,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-photo_pro/.env
+config/.env
 .venv
 env/
 venv/
