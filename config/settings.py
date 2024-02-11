@@ -19,10 +19,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "src.app.about",
-    "src.app.contacts",
-    "src.app.gallery",
-    "src.app.homepage",
+    "src.apps.about",
+    "src.apps.contacts",
+    "src.apps.gallery",
+    "src.apps.homepage",
 ]
 
 MIDDLEWARE = [
@@ -35,7 +35,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "photo_pro.urls"
+ROOT_URLCONF = "config.urls"
 
 TEMPLATES = [
     {
@@ -53,7 +53,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "photo_pro.wsgi.application"
+WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
     "default": {
