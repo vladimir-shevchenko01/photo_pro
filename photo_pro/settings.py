@@ -1,8 +1,12 @@
+from environs import Env
 from pathlib import Path
+
+env = Env()
+env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-av&jvugd_ifpm-(3r%hytr)cc1aw-#y^rp=99)ne24#86w6h17'
+SECRET_KEY = env("DJANGO_SECRET_KEY")
 
 DEBUG = True
 
@@ -80,3 +84,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
