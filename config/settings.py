@@ -95,6 +95,10 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Qty of images for gallery detail page
+IMAGE_UP_QTY = 2
+IMAGE_DOWN_QTY = 5
+
 try:
     from .local_settings import *
 except ImportError:
