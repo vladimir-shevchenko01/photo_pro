@@ -10,7 +10,7 @@ services:
       - pg_photo_data:/var/lib/postgresql/data
 
   backend:
-    build: ../
+    image: prstud/pro-photo:latest
     restart: always
     env_file:
       - ../config/.env
