@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <body class="body_box">
+		
+		<div class="wrapper">
+			
+			<div class="inner_body">
+				<div class="about_me" style="background-image:url('{{ about_note.image.url }}')">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="about-details">
+									<h3>{{ about_note.title }}</h3>
+									<p>{{ about_note.upper_text }}</p>
+									<p>{{ about_note.down_text }}</p>
+									<ul class="about_list">
+										<li>{{ about_note.list_first_line }}</li>
+										<li>{{ about_note.list_second_line }}</li>
+										<li>{{ about_note.list_third_line }}</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			
+		</div>
+	</body>
+{% endblock %}

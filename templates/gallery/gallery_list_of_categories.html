@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="inner_body">
+    <!-- Блок заглавного баннера -->
+    {% include "includes/banner.html" %}
+    <!-- Блок  списка категорий -->
+    <style>
+        ul {
+         list-style-type: none;
+        }
+    </style>
+    <ul>
+    {% for index in list_of_index %}
+      {% if index|divisibleby:2 %}
+        {% for cat in foto_cat %}
+          {% if forloop.counter0 == index %}
+            <li><div class="about_content_box">
+                <div class="about_content">
+                    <div class="about_content_inner">
+                        <h6>{{ cat.title }}</h6>
+                        <h1>{{ cat.foto_title }}</h1>
+                        <p>{{ cat.title_text|truncatewords:50 }}</p>
+                            <div class="button_group">
+                            <a href="{% url 'gallery:category_detail' cat.slug %}" class="button black_button effect_1" data-text="Read More"><span>Подробнее</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="aboutus_img" style="background-image:url('{{ cat.image.url }}')"></div>
+            </div></li>
+          {% endif %}
+        {% endfor %}
+    {% else %}
+      {% for cat in foto_cat %}
+        {% if forloop.counter0 == index %}
+            <li><div class="about_content_box">
+                <div class="aboutus_img" style="background-image:url('{{ cat.image.url }}')"></div>
+                <div class="about_content">
+                    <div class="about_content_inner">
+                        <h6>{{ cat.title }}</h6>
+                        <h1>{{ cat.foto_title }}</h1>
+                        <p>{{ cat.title_text|truncatewords:25 }}</p>
+                        <div class="button_group">
+                            <a href="{% url 'gallery:category_detail' cat.slug %}" class="button black_button effect_1" data-text="Read More"><span>Подробнее</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div></li>
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}

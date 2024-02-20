@@ -1,0 +1,44 @@
+version: '3.3'
+
+services:
+
+  db:
+    image: postgres:14
+    restart: always
+    env_file: ../config/.env
+    volumes:
+      - pg_photo_data:/var/lib/postgresql/data
+
+  backend:
+    image: prstud/pro-photo:latest
+    restart: always
+    env_file:
+      - ../config/.env
+    volumes:
+      - static_photo:/photo_pro_static/
+      - media_photo:/media/
+    command: bash -c "
+      python manage.py migrate --noinput
+      && python manage.py collectstatic --noinput
+      && cp -r /app-photo-pro/static/. /photo_pro_static/static/
+      && gunicorn --bind 0.0.0.0:8000 config.wsgi
+      "
+    depends_on:
+      - db
+
+  nginx:
+    image: prstud/nginx-photo:latest
+    env_file: ../config/.env
+    restart: always
+    ports:
+      - "8000:80"
+    volumes:
+      - static_photo:/staticfiles/
+      - media_photo:/media/
+    depends_on:
+      - backend
+
+volumes:
+  static_photo:
+  media_photo:
+  pg_photo_data:

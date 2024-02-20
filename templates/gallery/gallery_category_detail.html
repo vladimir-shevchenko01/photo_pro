@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Блок заглавного баннера -->
+{% include "includes/banner.html" %}
+<!--Конец блока заглавного баннера -->
+<!--Начало основного блока.-->
+<div class="inner_body bg_gray">
+    
+        <div class="container">
+            <div class="project_details_inner">
+                <div class="project_inner_top">
+                    <p><h3>{{ cat_desc.foto_title }}</h3></p>
+
+                    <p>{{ cat_desc.title_text }}</p>
+                </div>
+                <div class="project_details_gallery">
+                    <div class="row">
+                        {% for image in image_up %}
+                        <div class="col-md-6">
+                            <div class="gallery_item">
+                                <img src="{{ image.image.url }}" alt="image">
+                            </div>
+                        </div>
+                        {%  endfor %}
+                        {% for down_image in image_down %}
+                        <div class="col-md-4">
+                            <div class="gallery_item">
+                                <img src="{{ down_image.image.url }}" alt="image">
+                            </div>
+                        </div>
+                        {%  endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Конец основного блока.-->
+
+{% endblock %}
