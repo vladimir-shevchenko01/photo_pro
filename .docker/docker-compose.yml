@@ -15,12 +15,12 @@ services:
     env_file:
       - ../config/.env
     volumes:
-      - static_photo:/photo_pro_static/
-      - media_photo:/media/
+      - static_photo:/backend_static
+      - media_photo:/media
     command: bash -c "
       python manage.py migrate --noinput
       && python manage.py collectstatic --noinput
-      && cp -r /app-photo-pro/static/. /photo_pro_static/static/
+      && cp -r /app-photo-pro/static/. /backend_static/static/
       && gunicorn --bind 0.0.0.0:8000 config.wsgi
       "
     depends_on:
@@ -33,7 +33,7 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - static_photo:/staticfiles/
+      - static_photo:/staticfiles
       - media_photo:/media/
     depends_on:
       - backend
